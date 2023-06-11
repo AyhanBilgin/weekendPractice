@@ -1,0 +1,4 @@
+select CaseNumber,ContactId,Subject,Status,Priority,OwnerId from case 
+select AccountId, FirstName,LastName,Email from contact
+SELECT Id,Name FROM account WHERE phone = null order by name asc
+select Id,accountId from contact where accountId= null

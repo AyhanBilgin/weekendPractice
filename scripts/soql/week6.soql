@@ -1,0 +1,17 @@
+//Write the SOQL query for the following requirements:
+// 1. Fetch all the opportunities which have stage as Closed Won and Amount more than or equal to 35000.
+// 2. Fetch all the contacts and their related Account Name, order them by the contact’s last name in descending order.
+// 3. Fetch all the Accounts along with their related Opportunities with StageName other than Closed Lost. 
+//4. Find the Top 10 opportunities based on Amount value.
+// 5. Find lower 20 opportunities based on Amount value which are not set to Closed Won and not to Closed Lost stage.
+
+
+
+1-select id,name,amount,stagename  from opportunity where stagename='Closed Won' and amount >=35000
+2-select id,name,account.name,lastname  from contact order by lastname desc
+3-select id,name,(select stageName from opportunities where stageName != 'closed lost') from account
+4-select id,name,amount from opportunity where amount != null order by amount desc  limit 10
+   // 2 .yöntem =>> select id,name,amount from opportunity  order by amount desc nulls last
+5-select id,name,amount from opportunity where (stageName != 'closed won') and (stageName != 'closed lost') order by amount   limit 20
+    //2. yöntem =>> select id,name,amount from opportunity where (stageName != 'closed won') and (stageName != 'closed lost') order by amount  nulls last limit 20
+    //3. yöntem =>> select id,name,amount from opportunity where stagename not in ('closed won' ,'closed lost') order by amount  nulls last limit 20

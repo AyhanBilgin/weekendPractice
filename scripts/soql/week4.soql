@@ -1,0 +1,6 @@
+
+SELECT  Id,AccountId, LastName, FirstName, Email FROM Contact
+
+SELECT Name, Phone, Id FROM Account WHERE Phone = null ORDER BY Name ASC
+
+SELECT Id,Name ,AccountId FROM Contact WHERE AccountId = null 
